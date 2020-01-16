@@ -1,4 +1,4 @@
-# fabric_node_sdk_helper
+# Fabric SDK Adaptor
 
 Node sdk examples to interact with bityoga fabric set up
 
