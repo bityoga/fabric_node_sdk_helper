@@ -104,7 +104,7 @@ Node sdk examples to interact with bityoga fabric set up
             // Without Arguments
             let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME);
             // With Arguments
-            //let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME , "a");
+            let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME , "a");
 
             let response = {
                             "status":"success",
