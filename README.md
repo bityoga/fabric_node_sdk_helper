@@ -124,6 +124,7 @@ Node sdk examples to interact with bityoga fabric set up
           app.post('/invoke', async (req, res) =>  {
 
             let user_name = req.body.uname;
+            let car_license_plate = req.body.car_license_plate;
 
             let CHANNEL_NAME  = "appchannel";
             let CHAIN_CODE_NAME = "carcc";
