@@ -1,2 +1,2 @@
-# smart_energy_app
-node app for smart energy
+# fabric_node_sdk_helper
+fabric_node_sdk_helper
