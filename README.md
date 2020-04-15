@@ -10,7 +10,7 @@ Node sdk examples to interact with bityoga fabric set up
 
 # Run Instructions
   1. ## Clone this repository into your app directory
-      - git clone https://github.com/anandhakumarpalanisamy/fabric_node_sdk_helper.git
+      - git clone https://github.com/bityoga/fabric_node_sdk_helper.git
     
   2. ## Update your app's package.json
       - Edit your app's **package.json with the "fabric_node_sdk_helper/package.json"** found in this repository.
