@@ -10,15 +10,14 @@ Node sdk examples to interact with bityoga fabric set up
 
 # Run Instructions
   1. ## Clone this repository into your app directory
-      - git clone https://github.com/bityoga/fabric_node_sdk_helper.git
+      ```git clone https://github.com/bityoga/fabric_node_sdk_helper.git```
     
   2. ## Update your app's package.json
-      - Edit your app's **package.json with the "fabric_node_sdk_helper/package.json"** found in this repository.
+      Edit your app's **package.json with the "fabric_node_sdk_helper/package.json"** found in this repository.
    
   3. ## Run npm install
-      - ####  Set node version
-          -  nvm use node v8.9.0   (using nvm)
-      - npm install
+      - **Set node version:** ```nvm use node v8.9.0``` (using nvm)
+      - ```npm install```
       
   3. ## Update ip address in 'fabric_node_sdk_helper/network_profile.json'
       - **update the url ip addresses of orderer, peer2, orgca, tlsca (4 places).**
@@ -26,13 +25,17 @@ Node sdk examples to interact with bityoga fabric set up
       
   4.  ## Retrieve hyperledger fabric tls certificates of 'orderer' and 'peer2'
       #### Through shell script - needs ssh permission
-         - cd fabric_node_sdk_helper/
-        - In 'fabric_node_sdk_helper/get_tls_certificates.sh' Replace **IP_ADDRESS="178.62.207.235"** with your fabric prime manager's ip address
-        - **Execute  Command :** bash get_tls_certificates.sh
+        - ```cd fabric_node_sdk_helper/```
+        - In 'fabric_node_sdk_helper/get_tls_certificates.sh' Replace **IP_ADDRESS="LOCALHOST_OR_YOUR_MASTER_MACHINE_IP_ADDRESS"** with your fabric prime manager's ip address
+        - **Execute  Command :** ```bash get_tls_certificates.sh```
       #### (OR) Through Manual scp commands - needs ssh permission
-        - Replace ipaddress in the below scp commands with your fabric prime manager's ip address.
-        - scp -r root@178.62.207.235:/root/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem ./fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
-        - scp -r root@178.62.207.235:/root/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem ./fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        ##### (Replace ipaddress in the below scp commands with your fabric prime manager's ip address.)
+        ```
+        scp -r root@LOCALHOST_OR_YOUR_MASTER_MACHINE_IP_ADDRESS:/root/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem ./fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        ```
+        ```
+        scp -r root@LOCALHOST_OR_YOUR_MASTER_MACHINE_IP_ADDRESS:/root/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem ./fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        ```
         
       #### (OR) Manually edit the following two files - no need of ssh permission
         - fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
@@ -40,14 +43,14 @@ Node sdk examples to interact with bityoga fabric set up
          
         
    5. ## Enroll admin
-        - #### Call this function "once" when your app starts.
+        #### Call this function "once" when your app starts.
         - When this function is called, a **wallet** directory will be created in the current directory
         - Admin user will be enrolled and the certificates will availalble in **wallet** directory
         - If fabric certificates are changed in future, this wallet directory should cleaned, and this function must be called again to get the new certificates
         - check wallet directory
-           - a directory named 'admin' will be available
-              - certificates for admin will be available under this directory.
-        - sample : 
+        - a directory named 'admin' will be available
+        - certificates for admin will be available under this directory.
+        #### Example
           ``` Javascript
            // import fabric node sdk helper functions
           const enrollAdmin = require('./fabric_node_sdk_helper/enrollAdmin');
@@ -61,7 +64,7 @@ Node sdk examples to interact with bityoga fabric set up
           ```
 
    6. ## Register user
-        - sample : 
+        #### Example
           ``` Javascript
            // import fabric node sdk helper functions
           const registerUser = require('./fabric_node_sdk_helper/registerUser');
@@ -84,11 +87,11 @@ Node sdk examples to interact with bityoga fabric set up
           });
           ```
         - check wallet directory
-           - a directory with the name of the 'registerd user name' will be available
-              - certificates for the registerd user  will be available under this directory.
+        - a directory with the name of the 'registerd user name' will be available
+        - certificates for the registerd user  will be available under this directory.
     
    7. ## Query a chaincode
-        - sample : 
+        #### Example
           ``` Javascript
            // import fabric node sdk helper functions
           const querychaincode = require('./fabric_node_sdk_helper/query');
@@ -116,7 +119,7 @@ Node sdk examples to interact with bityoga fabric set up
           ```
         
    8. ## Invoke a chaincode
-        - sample : 
+        #### Example
           ``` Javascript
            // import fabric node sdk helper functions
           const invokechaincode = require('./fabric_node_sdk_helper/invoke');
