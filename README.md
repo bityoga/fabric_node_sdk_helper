@@ -51,99 +51,99 @@ Node sdk examples to interact with bityoga fabric set up
         - a directory named 'admin' will be available
         - certificates for admin will be available under this directory.
         #### Example
-          ``` Javascript
-           // import fabric node sdk helper functions
-          const enrollAdmin = require('./fabric_node_sdk_helper/enrollAdmin');
+        ``` Javascript
+         // import fabric node sdk helper functions
+        const enrollAdmin = require('./fabric_node_sdk_helper/enrollAdmin');
 
-          async function main() {
-              admin_enroll_status = await enrollAdmin();
-              console.log(admin_enroll_status);
-          }
+        async function main() {
+            admin_enroll_status = await enrollAdmin();
+            console.log(admin_enroll_status);
+        }
 
-          main();
-          ```
+        main();
+        ```
 
    6. ## Register user
         #### Example
-          ``` Javascript
-           // import fabric node sdk helper functions
-          const registerUser = require('./fabric_node_sdk_helper/registerUser');
+        ``` Javascript
+         // import fabric node sdk helper functions
+        const registerUser = require('./fabric_node_sdk_helper/registerUser');
 
-          app.post('/register', async (req, res) =>  {
-    
-            let user_name = req.body.uname;
-            let user_password = req.body.psw;
-            let user_role = "client";
+        app.post('/register', async (req, res) =>  {
+
+          let user_name = req.body.uname;
+          let user_password = req.body.psw;
+          let user_role = "client";
 
 
-            let register_status = await registerUser(user_name,
-                                                    user_password,
-                                                    user_role);
+          let register_status = await registerUser(user_name,
+                                                  user_password,
+                                                  user_role);
 
-            let response = {
-                            status:register_status
-                       };
-            res.json(response);
-          });
-          ```
+          let response = {
+                          status:register_status
+                     };
+          res.json(response);
+        });
+        ```
         - check wallet directory
         - a directory with the name of the 'registerd user name' will be available
         - certificates for the registerd user  will be available under this directory.
     
    7. ## Query a chaincode
         #### Example
-          ``` Javascript
-           // import fabric node sdk helper functions
-          const querychaincode = require('./fabric_node_sdk_helper/query');
+        ``` Javascript
+         // import fabric node sdk helper functions
+        const querychaincode = require('./fabric_node_sdk_helper/query');
 
-          app.post('/query', async (req, res) =>  {
+        app.post('/query', async (req, res) =>  {
 
-            let user_name = req.body.uname;
+          let user_name = req.body.uname;
 
-            let CHANNEL_NAME  = "appchannel";
-            let CHAIN_CODE_NAME = "carcc";
-            let CHAIN_CODE_FUNCTION_NAME = "listCars";
-             
-            // Without Arguments
-            let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME);
-            // With Arguments
-            let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME , "a");
+          let CHANNEL_NAME  = "appchannel";
+          let CHAIN_CODE_NAME = "carcc";
+          let CHAIN_CODE_FUNCTION_NAME = "listCars";
 
-            let response = {
-                            "status":"success",
-                            "data":query_result
-                       };
-            console.log(response);
-            res.json(response);
-          });
-          ```
+          // Without Arguments
+          let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME);
+          // With Arguments
+          let query_result = await querychaincode(user_name,CHANNEL_NAME,CHAIN_CODE_NAME, CHAIN_CODE_FUNCTION_NAME , "a");
+
+          let response = {
+                          "status":"success",
+                          "data":query_result
+                     };
+          console.log(response);
+          res.json(response);
+        });
+        ```
         
    8. ## Invoke a chaincode
         #### Example
-          ``` Javascript
-           // import fabric node sdk helper functions
-          const invokechaincode = require('./fabric_node_sdk_helper/invoke');
+        ``` Javascript
+         // import fabric node sdk helper functions
+        const invokechaincode = require('./fabric_node_sdk_helper/invoke');
 
-          app.post('/invoke', async (req, res) =>  {
+        app.post('/invoke', async (req, res) =>  {
 
-            let user_name = req.body.uname;
-            let car_license_plate = req.body.car_license_plate;
+          let user_name = req.body.uname;
+          let car_license_plate = req.body.car_license_plate;
 
-            let CHANNEL_NAME  = "appchannel";
-            let CHAIN_CODE_NAME = "carcc";
-            let CHAIN_CODE_FUNCTION_NAME = "listCars";
+          let CHANNEL_NAME  = "appchannel";
+          let CHAIN_CODE_NAME = "carcc";
+          let CHAIN_CODE_FUNCTION_NAME = "listCars";
 
-            let invoke_result = await invokechaincode(user_name, 
-                                            CHANNEL_NAME, 
-                                            CHAIN_CODE_NAME, 
-                                            CHAIN_CODE_FUNCTION_NAME,
-                                            car_license_plate,
-                                            "Opel","Corsa","Light Blue","7","2050","1");
-            let response = {
-                            "status":"success",
-                            "data":invoke_result
-                       };
-            console.log(response);
-            res.json(response);
-          });
-          ```
+          let invoke_result = await invokechaincode(user_name, 
+                                          CHANNEL_NAME, 
+                                          CHAIN_CODE_NAME, 
+                                          CHAIN_CODE_FUNCTION_NAME,
+                                          car_license_plate,
+                                          "Opel","Corsa","Light Blue","7","2050","1");
+          let response = {
+                          "status":"success",
+                          "data":invoke_result
+                     };
+          console.log(response);
+          res.json(response);
+        });
+        ```
